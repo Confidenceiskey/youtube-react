@@ -1,3 +1,7 @@
+This is a Guided tutorial project to build a YouTube clone in React!
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
