@@ -6,6 +6,7 @@ $sidebar-hover-color: #ebebeb;
   margin-top: $header-nav-height;
   overflow-y: auto;
   padding-bottom: $header-nav-height;
+  height: calc(100% - 64px);
 
   .sidebar-item:hover {
     background: $sidebar-hover-color;
