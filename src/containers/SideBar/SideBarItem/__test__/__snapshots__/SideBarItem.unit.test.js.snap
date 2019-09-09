@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Various cases for SideBarItem renders SideBarItem 1`] = `<SideBarItem />`;
+
+exports[`Various cases for SideBarItem renders SideBarItem w/ icon & label 1`] = `
+<SideBarItem
+  icon="fire"
+  label="Trending"
+/>
+`;
+
+exports[`Various cases for SideBarItem renders empty SideBarItem 1`] = `<SideBarItem />`;
+
+exports[`Various cases for SideBarItem renders highlighted SideBarItem 1`] = `
+<SideBarItem
+  highlighted={true}
+  icon="fire"
+  label="Trending"
+/>
+`;

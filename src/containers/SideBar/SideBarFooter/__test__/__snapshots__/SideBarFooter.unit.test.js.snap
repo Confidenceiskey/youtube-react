@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders SideBarFooter 1`] = `
+<Fragment>
+  <footer
+    className="footer-block"
+  >
+    <div>
+      About Press Copyright
+    </div>
+    <div>
+      Creators Advertise
+    </div>
+    <div>
+      Developers +MyTube
+    </div>
+    <div>
+      Legal
+    </div>
+  </footer>
+  <footer
+    className="footer-block"
+  >
+    <div>
+      Terms Privacy
+    </div>
+    <div>
+      Policy & Safety
+    </div>
+    <div>
+      Test new features
+    </div>
+  </footer>
+  <footer
+    className="footer-block"
+  >
+    <div>
+      All prices include VAT
+    </div>
+  </footer>
+  <footer
+    className="footer-block"
+  >
+    <div>
+      © Producercoder.com - A YouTube clone for educational purposes under fair use.
+    </div>
+  </footer>
+</Fragment>
+`;

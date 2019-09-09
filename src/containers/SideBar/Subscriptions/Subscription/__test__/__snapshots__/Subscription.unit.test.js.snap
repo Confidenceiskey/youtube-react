@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`various cases for Subscription renders empty subscription 1`] = `<Subscription />`;
+
+exports[`various cases for Subscription renders non-broadcasting subscription with new vids 1`] = `
+<Subscription
+  amountNewVideos={7}
+  label="Red Bull TV"
+/>
+`;
+
+exports[`various cases for Subscription renders subscription that is broadcasting 1`] = `
+<Subscription
+  broadcasting={true}
+  label="freeCodeCamp"
+/>
+`;

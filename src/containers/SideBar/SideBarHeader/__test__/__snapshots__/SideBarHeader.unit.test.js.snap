@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Various cases for SideBarHeader renders SideBarHeader with props.title="" 1`] = `
+<SideBarHeader
+  title=""
+/>
+`;
+
+exports[`Various cases for SideBarHeader renders SideBarHeader with props.title="Heading" 1`] = `
+<SideBarHeader
+  title="Heading"
+/>
+`;
+
+exports[`renders SideBarHeader 1`] = `<SideBarHeader />`;

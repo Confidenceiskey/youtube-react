@@ -1,0 +1,102 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders HeaderNav 1`] = `
+<Menu
+  borderless={true}
+  className="top-menu"
+  fixed="top"
+>
+  <MenuItem
+    className="logo"
+    header={true}
+  >
+    <Image
+      alt="Logo of Mytube"
+      as="img"
+      size="tiny"
+      src={
+        Object {
+          "0": "m",
+          "1": "y",
+          "2": "t",
+          "3": "u",
+          "4": "b",
+          "5": "e",
+          "6": ".",
+          "7": "j",
+          "8": "p",
+          "9": "g",
+          "default": "mytube.jpg",
+        }
+      }
+      ui={true}
+    />
+  </MenuItem>
+  <MenuMenu
+    className="nav-container"
+  >
+    <MenuItem
+      className="search-input"
+    >
+      <Form
+        as="form"
+      >
+        <FormField>
+          <input
+            action="Go"
+            placeholder="Search"
+            size="small"
+          />
+        </FormField>
+      </Form>
+    </MenuItem>
+    <MenuMenu
+      position="right"
+    >
+      <MenuItem>
+        <Icon
+          as="i"
+          className="header-icon"
+          name="video camera"
+          size="large"
+        />
+      </MenuItem>
+      <MenuItem>
+        <Icon
+          as="i"
+          className="header-icon"
+          name="grid layout"
+          size="large"
+        />
+      </MenuItem>
+      <MenuItem>
+        <Icon
+          as="i"
+          className="header-icon"
+          name="chat"
+          size="large"
+        />
+      </MenuItem>
+      <MenuItem>
+        <Icon
+          as="i"
+          className="header-icon"
+          name="alarm"
+          size="large"
+        />
+      </MenuItem>
+      <MenuItem
+        name="avatar"
+      >
+        <Image
+          alt="avatar"
+          as="img"
+          avatar={true}
+          src="http://via.placeholder.com/80x80"
+          ui={true}
+        />
+      </MenuItem>
+    </MenuMenu>
+  </MenuMenu>
+</Menu>
+`;
