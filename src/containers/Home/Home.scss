@@ -1,7 +1,7 @@
 @import '../../styles/shared.scss';
 
 .home {
-	margin: $header-nav-height 0 0 $sidebar-left-width;
+	margin: 0 0 0 $sidebar-left-width;
   display: grid;
   grid: auto / auto;
   justify-content: center;
