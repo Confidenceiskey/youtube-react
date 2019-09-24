@@ -10,27 +10,31 @@ exports[`renders HeaderNav 1`] = `
     className="logo"
     header={true}
   >
-    <Image
-      alt="Logo of Mytube"
-      as="img"
-      size="tiny"
-      src={
-        Object {
-          "0": "m",
-          "1": "y",
-          "2": "t",
-          "3": "u",
-          "4": "b",
-          "5": "e",
-          "6": ".",
-          "7": "j",
-          "8": "p",
-          "9": "g",
-          "default": "mytube.jpg",
+    <Link
+      to="/"
+    >
+      <Image
+        alt="Logo of Mytube"
+        as="img"
+        size="tiny"
+        src={
+          Object {
+            "0": "m",
+            "1": "y",
+            "2": "t",
+            "3": "u",
+            "4": "b",
+            "5": "e",
+            "6": ".",
+            "7": "j",
+            "8": "p",
+            "9": "g",
+            "default": "mytube.jpg",
+          }
         }
-      }
-      ui={true}
-    />
+        ui={true}
+      />
+    </Link>
   </MenuItem>
   <MenuMenu
     className="nav-container"

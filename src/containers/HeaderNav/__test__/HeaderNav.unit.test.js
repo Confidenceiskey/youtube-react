@@ -7,4 +7,4 @@ it('renders HeaderNav', () => {
     <HeaderNav />
   );
   expect(wrapper).toMatchSnapshot();
-})
+});
