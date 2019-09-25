@@ -1,13 +1,14 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import './Watch.scss';
-import Video from '../../components/Video/Video';
+import VideoPreview from '../../components/VideoPreview/VideoPreview';
 
 class Watch extends Component {
   render() {
     return (
-      <div style={{maxWidth: '80%'}}>
-        <Video id='-7fuHEEmEjs' />
-      </div>
+      <Fragment>
+        <VideoPreview horizontal={true} />
+        <VideoPreview />
+      </Fragment>
     );
   }
 }
