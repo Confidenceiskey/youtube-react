@@ -23,7 +23,7 @@ class App extends Component {
       window.gapi.load('client', () => {
         window.gapi.client.setApiKey(API_KEY);
         window.gapi.client.load('youtube', 'v3', () => {
-          this.props.youtubeLibraryLoaded();
+          youtubeLibraryLoaded();
         });
       });
     };
