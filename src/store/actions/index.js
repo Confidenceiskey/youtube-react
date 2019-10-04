@@ -13,8 +13,8 @@ export const createRequestTypes = (base) => {
 }
 
 export const createAction = (type, payload = {}) => {
-  return (
+  return {
     type,
-    {...payload}
-  );
+    ...payload
+  };
 }
