@@ -3,6 +3,7 @@ import { Image } from 'semantic-ui-react';
 import './VideoPreview.scss';
 import TimeAgo from 'javascript-time-ago';
 import en from 'javascript-time-ago/locale/en';
+import { Link } from 'react-router-dom';
 import { getShortNumberString } from '../../services/number/number-format';
 import { getVideoDurationString } from '../../services/date/date-format';
 
@@ -21,24 +22,26 @@ class VideoPreview extends Component {
     const viewAndTimeString = VideoPreview.getFormattedViewAndTime(video);
     const horizontal = this.props.horizontal? 'horizontal' : null;
     return (
-      <div className={['video-preview', horizontal].join(' ')}>
-        <div className='image-container'>
-          <Image 
-            src={video.snippet.thumbnails.medium.url} 
-            alt={`Video Preview of ${video.snippet.title}`}
-          />
-          <div className='time-label'>
-            <span>{videoDuration}</span>
+      <Link to={{pathname: this.props.pathname, search: this.props.search}}>
+        <div className={['video-preview', horizontal].join(' ')}>
+          <div className='image-container'>
+            <Image 
+              src={video.snippet.thumbnails.medium.url} 
+              alt={`Video Preview of ${video.snippet.title}`}
+            />
+            <div className='time-label'>
+              <span>{videoDuration}</span>
+            </div>
+          </div>
+          <div className='video-info'>
+            <div className='semi-bold show-max-two-lines'>{video.snippet.title}</div>
+            <div className='video-preview-metadata-container'>
+              <div className='channel-title'>{video.snippet.channelTitle}</div>
+              <div><span>{viewAndTimeString}</span></div>
+            </div>
           </div>
         </div>
-        <div className='video-info'>
-          <div className='semi-bold show-max-two-lines'>{video.snippet.title}</div>
-          <div className='video-preview-metadata-container'>
-            <div className='channel-title'>{video.snippet.channelTitle}</div>
-            <div><span>{viewAndTimeString}</span></div>
-          </div>
-        </div>
-      </div>
+      </Link>
     );
   }
   static getFormattedViewAndTime(video) {

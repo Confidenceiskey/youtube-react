@@ -7,6 +7,12 @@ import VideoInfoBox from '../../components/VideoInfoBox/VideoInfoBox';
 import VideoMetadata from '../../components/VideoMetadata/VideoMetadata';
 
 class Watch extends Component {
+
+  getVideoId() {
+    const searchParams = new URLSearchParams(this.props.location.search);
+    return searchParams.get('v');
+  }
+
   render() {
     return (
       <div className='watch-grid'>

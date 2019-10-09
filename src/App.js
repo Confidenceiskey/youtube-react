@@ -4,7 +4,7 @@ import Watch from './containers/Watch/Watch';
 import AppLayout from './components/AppLayout/AppLayout';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, withRouter } from 'react-router-dom';
 import { youtubeLibraryLoaded } from './store/actions/api';
 
 const API_KEY = 'secret';
@@ -46,4 +46,4 @@ const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({ youtubeLibraryLoaded }, dispatch);
 }
 
-export default connect(null, mapDispatchToProps)(App);
+export default withRouter(connect(null, mapDispatchToProps)(App));

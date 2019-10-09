@@ -11,7 +11,12 @@ const VideoGrid = ({ hideDivider, title, videos }) => {
 
   const gridItems = videos.map(video => {
     return ( 
-      <VideoPreview video={video} key={video.id} />
+      <VideoPreview 
+        video={video} 
+        key={video.id} 
+        pathname='/watch'
+        search={`?v=${video.id}`}
+      />
     );
   });
 
