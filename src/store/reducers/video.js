@@ -2,7 +2,7 @@ import { createSelector } from 'reselect';
 import { MOST_POPULAR, MOST_POPULAR_BY_CATEGORY, VIDEO_CATEGORIES } from '../actions/video';
 import { SUCCESS } from '../actions';
 import { WATCH_DETAILS } from '../actions/watch';
-import { VIDEO_LIST_RESPONSE } from '../api/youtube-response-types';
+import { VIDEO_LIST_RESPONSE, SEARCH_LIST_RESPONSE } from '../api/youtube-response-types';
 
 const initialState = {
   byId: {},
@@ -27,9 +27,11 @@ export default function videos(state = initialState, action) {
 
 function reduceWatchDetails(responses, prevState) {
   const videoDetailResponse = responses.find(r => r.result.kind === VIDEO_LIST_RESPONSE);
-  //we know that items will only have one element
-  //because we explicitly asked for a video with a specific id
+  // we know that items will only have one element
+  // because we explicitly asked for a video with a specific id
+
   const video = videoDetailResponse.result.items[0];
+  const relatedEntry = reduceRelatedVideosRequest(responses);
 
   return {
     ...prevState,
@@ -37,6 +39,22 @@ function reduceWatchDetails(responses, prevState) {
       ...prevState.byId,
       [video.id]: video
     },
+    related: {
+      ...prevState.related,
+      [video.id]: relatedEntry
+    }
+  };
+}
+
+function reduceRelatedVideosRequest(responses) {
+  const relatedVideosResponse = responses.find(r => r.result.kind === SEARCH_LIST_RESPONSE);
+  const { pageInfo, items, nextPageToken } = relatedVideosResponse.result;
+  const relatedVideoIds = items.map(video => video.id);
+
+  return {
+    totalResults: pageInfo.totalResults,
+    nextPageToken,
+    items: relatedVideoIds
   };
 }
 
