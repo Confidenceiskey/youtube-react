@@ -130,6 +130,10 @@ function groupVideosByIdAndCategory(response) {
   * SELECTORS
   **/
 
+export const getVideoById = (state, videoId) => {
+  return state.videos.byId[videoId];
+};
+
 export const videoCategoriesLoaded = createSelector(
   state => state.videos.categories,
   (categories) => {

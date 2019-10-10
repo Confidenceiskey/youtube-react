@@ -24,6 +24,14 @@ export function getVideoDurationString(iso8601DateString) {
   }
 }
 
+export function getPublishedAtDateString(iso8601DateString) {
+  if (!iso8601DateString) {
+    return '';
+  }
+  const date = new Date(Date.parse(iso8601DateString));
+  return date.toDateString();
+}
+
 const objMap = ['years', 'months','days', 'hours', 'minutes', 'seconds'];
 const numbers = '\\d+(?:[\\.,]\\d{0,3})?';
 const datePattern = `(${numbers}Y)?(${numbers}M)?(${numbers}D)?`;

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import Linkify from 'react-linkify';
 import './VideoInfoBox.scss';
 import { Button, Image } from 'semantic-ui-react';
+import { getPublishedAtDateString } from '../../services/date/date-format';
 
 class VideoInfoBox extends Component {
   constructor() {
@@ -18,7 +20,17 @@ class VideoInfoBox extends Component {
     });
   }
 
-  render() {
+  getDescriptionParagraphs() {
+    const videoDescription = this.props.video.snippet ? this.props.video.snippet.description : null;
+    if (!videoDescription) {
+      return null;
+    }
+    return videoDescription.split('\n').map((paragraph, i) => {
+      return <p key={i}><Linkify>{paragraph}</Linkify></p>;
+    })
+  }
+
+  getConfig() {
     let descriptionTextClass = 'collapsed';
     let buttonTitle = 'Show More';
 
@@ -26,6 +38,20 @@ class VideoInfoBox extends Component {
       descriptionTextClass = 'expanded';
       buttonTitle = 'Show Less';
     }
+    return {
+      descriptionTextClass,
+      buttonTitle
+    };
+  }
+
+  render() {
+    if (!this.props.video) {
+      return <div />;
+    }
+
+    const descriptionParagraphs = this.getDescriptionParagraphs();
+    const { descriptionTextClass, buttonTitle } = this.getConfig();
+    const publishedAtString = getPublishedAtDateString(this.props.video.snippet.publishedAt);
 
     return (
       <div className='video-info-box'>
@@ -36,16 +62,12 @@ class VideoInfoBox extends Component {
         />
         <div className='video-info'>
           <div className='channel-name'>Channel Name</div>
-          <div className='video-publication-date'>Sept 24, 2019</div>
+          <div className='video-publication-date'>{publishedAtString}</div>
         </div>
         <Button color='youtube'>91.5K Subscribers</Button>
         <div className='video-description'>
           <div className={descriptionTextClass}>
-            <p>Paragraph 1</p>
-            <p>Paragraph 2</p>
-            <p>Paragraph 3</p>
-            <p>Paragraph 4</p>
-            <p>Paragraph 5</p>
+            {descriptionParagraphs}
           </div>
           <Button compact onClick={this.onToggleCollapseButtonClick}>{buttonTitle}</Button>
         </div>
