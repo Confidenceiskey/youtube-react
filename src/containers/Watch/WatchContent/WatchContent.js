@@ -5,7 +5,7 @@ import RelatedVideos from '../../../components/RelatedVideos/RelatedVideos';
 import Video from '../../../components/Video/Video';
 import VideoInfoBox from '../../../components/VideoInfoBox/VideoInfoBox';
 import VideoMetadata from '../../../components/VideoMetadata/VideoMetadata';
-import { getVideoById } from '../../../store/reducers/video';
+import { getRelatedVideos, getVideoById } from '../../../store/reducers/video';
 import './WatchContent.scss';
 
 class WatchContent extends Component {
@@ -19,7 +19,7 @@ class WatchContent extends Component {
         <VideoMetadata className='metadata' video={this.props.video} />
         <VideoInfoBox className='video-info-box' video={this.props.video} />
         <Comments className='comments' amountComments={112499} />
-        <RelatedVideos className='relatedVideos' /> 
+        <RelatedVideos className='relatedVideos' videos={this.props.relatedVideos} /> 
       </div>
     );
   }
@@ -27,6 +27,7 @@ class WatchContent extends Component {
 
 function mapStateToProps(state, props) {
   return {
+    relatedVideos: getRelatedVideos(state, props.videoId),
     video: getVideoById(state, props.videoId)
   };
 }
