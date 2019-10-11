@@ -1,6 +1,7 @@
 import apiReducer from './api';
 import { combineReducers } from 'redux';
 import videosReducer from './video';
+import channelsReducer from './channels';
 
 // export default (state = {}, action) => {
 //   switch(action.type) {
@@ -11,5 +12,6 @@ import videosReducer from './video';
 
 export default combineReducers({
   api: apiReducer,
-  videos: videosReducer
+  videos: videosReducer,
+  channels: channelsReducer
 });

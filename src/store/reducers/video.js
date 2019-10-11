@@ -3,6 +3,7 @@ import { MOST_POPULAR, MOST_POPULAR_BY_CATEGORY, VIDEO_CATEGORIES } from '../act
 import { SUCCESS } from '../actions';
 import { WATCH_DETAILS, VIDEO_DETAILS } from '../actions/watch';
 import { VIDEO_LIST_RESPONSE, SEARCH_LIST_RESPONSE } from '../api/youtube-response-types';
+import { getSearchParam } from '../../services/url';
 
 const initialState = {
   byId: {},
@@ -172,6 +173,17 @@ function groupVideosByIdAndCategory(response) {
 /**
   * SELECTORS
   **/
+
+export const getChannelId = (state, location, name) => {
+  const videoId = getSearchParam(location, name);
+  const video = state.videos.byId[videoId];
+
+  console.log(state);
+  if (video) {
+    return video.snippet.channelId;
+  }
+  return null;
+};
 
 export const getVideoById = (state, videoId) => {
   return state.videos.byId[videoId];
