@@ -177,8 +177,7 @@ function groupVideosByIdAndCategory(response) {
 export const getChannelId = (state, location, name) => {
   const videoId = getSearchParam(location, name);
   const video = state.videos.byId[videoId];
-
-  console.log(state);
+  
   if (video) {
     return video.snippet.channelId;
   }

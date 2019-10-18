@@ -21,8 +21,8 @@ class Watch extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.youtubeLibraryLoaded !== prevProps.youtubeLibraryLoaded) {
-      this.fetchWatchContent();
+    if (this.props.youtubeLibraryLoaded !== prevProps.youtubeLibraryLoaded || this.props.channelId !== prevProps.channelId) {
+      this.fetchWatchContent(prevProps);
     }
   }
 
@@ -31,7 +31,9 @@ class Watch extends Component {
     if (!videoId) {
       this.props.history.push('/');
     }
-    this.props.fetchWatchDetails(videoId, this.props.channelId);
+    const thisChannelId = this.props.channelId;
+    //for some reason this.props.channelId doesn't get passed down to fetchWatchDetails
+    this.props.fetchWatchDetails(videoId, thisChannelId);
   }
 
   render() {
@@ -42,14 +44,14 @@ class Watch extends Component {
   }
 }
 
-function mapStateToProps(state, props) {
+const mapStateToProps = (state, props) => {
   return {
     youtubeLibraryLoaded: getYoutubeLibraryLoaded(state),
     channelId: getChannelId(state, props.location, 'v')
   };
 }
 
-function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = (dispatch) => {
   const fetchWatchDetails = watchActions.details.request;
   return bindActionCreators({fetchWatchDetails}, dispatch);
 }

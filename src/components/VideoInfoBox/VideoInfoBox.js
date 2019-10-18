@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import Linkify from 'react-linkify';
 import './VideoInfoBox.scss';
-import { Button, Image } from 'semantic-ui-react';
+import { Button, Divider, Image } from 'semantic-ui-react';
 import { getPublishedAtDateString } from '../../services/date/date-format';
+import { getShortNumberString } from '../../services/number/number-format';
 
 class VideoInfoBox extends Component {
   constructor() {
@@ -44,8 +45,15 @@ class VideoInfoBox extends Component {
     };
   }
 
+  getSubscriberButtonText() {
+    const { channel } = this.props;
+    const parsedSubscriberCount = Number(channel.statistics.subscriberCount);
+    const subscriberCount = getShortNumberString(parsedSubscriberCount);
+    return `Subscribe ${subscriberCount}`;
+  }
+
   render() {
-    if (!this.props.video) {
+    if (!this.props.video || !this.props.channel) {
       return <div />;
     }
 
@@ -53,24 +61,32 @@ class VideoInfoBox extends Component {
     const { descriptionTextClass, buttonTitle } = this.getConfig();
     const publishedAtString = getPublishedAtDateString(this.props.video.snippet.publishedAt);
 
+    const { channel } = this.props;
+    const buttonText = this.getSubscriberButtonText();
+    const channelThumbnail = channel.snippet.thumbnail.medium.url;
+    const channelTitle = channel.snippet.title;
+
     return (
-      <div className='video-info-box'>
-        <Image 
-          className='channel-image' 
-          src='http://via.placeholder.com/48x48' 
-          circular 
-        />
-        <div className='video-info'>
-          <div className='channel-name'>Channel Name</div>
-          <div className='video-publication-date'>{publishedAtString}</div>
-        </div>
-        <Button color='youtube'>91.5K Subscribers</Button>
-        <div className='video-description'>
-          <div className={descriptionTextClass}>
-            {descriptionParagraphs}
+      <div>
+        <div className='video-info-box'>
+          <Image 
+            className='channel-image' 
+            src={channelThumbnail} 
+            circular 
+          />
+          <div className='video-info'>
+            <div className='channel-name'>{channelTitle}</div>
+            <div className='video-publication-date'>{publishedAtString}</div>
           </div>
-          <Button compact onClick={this.onToggleCollapseButtonClick}>{buttonTitle}</Button>
+          <Button color='youtube'>{buttonText}</Button>
+          <div className='video-description'>
+            <div className={descriptionTextClass}>
+              {descriptionParagraphs}
+            </div>
+            <Button compact onClick={this.onToggleCollapseButtonClick}>{buttonTitle}</Button>
+          </div>
         </div>
+        <Divider />
       </div>
     );
   }
