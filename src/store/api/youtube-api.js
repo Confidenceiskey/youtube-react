@@ -4,7 +4,7 @@ export function buildChannelRequest(channelId) {
     {
       part: 'snippet,statistics',
       id: channelId,
-      fields: 'kind,items,(id,snippet(description,thumbnails/medium,title),statistics/subscriberCount)'
+      fields: 'kind,items(id,snippet(description,thumbnails/medium,title),statistics/subscriberCount)'
     }, null);
 }
 

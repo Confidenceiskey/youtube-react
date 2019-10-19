@@ -19,9 +19,8 @@ export default function (state = initialState, action) {
 
 function reduceWatchDetails(responses, prevState) {
   const channelResponse = responses.find(response => response.result.kind === CHANNEL_LIST_RESPONSE);
-  console.log('test: ', channelResponse);
   let channels = {};
-  console.log(responses);
+
   if (channelResponse && channelResponse.result.items) {
     // we know that there will only be one item
     // because we ask for a channel with a specific id

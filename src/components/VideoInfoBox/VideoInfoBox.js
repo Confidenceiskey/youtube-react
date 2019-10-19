@@ -63,7 +63,7 @@ class VideoInfoBox extends Component {
 
     const { channel } = this.props;
     const buttonText = this.getSubscriberButtonText();
-    const channelThumbnail = channel.snippet.thumbnail.medium.url;
+    const channelThumbnail = channel.snippet.thumbnails.medium.url;
     const channelTitle = channel.snippet.title;
 
     return (

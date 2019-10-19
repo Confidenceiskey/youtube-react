@@ -21,7 +21,7 @@ class Watch extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.youtubeLibraryLoaded !== prevProps.youtubeLibraryLoaded || this.props.channelId !== prevProps.channelId) {
+    if (this.props.youtubeLibraryLoaded !== prevProps.youtubeLibraryLoaded) {
       this.fetchWatchContent(prevProps);
     }
   }
@@ -31,9 +31,8 @@ class Watch extends Component {
     if (!videoId) {
       this.props.history.push('/');
     }
-    const thisChannelId = this.props.channelId;
-    //for some reason this.props.channelId doesn't get passed down to fetchWatchDetails
-    this.props.fetchWatchDetails(videoId, thisChannelId);
+
+    this.props.fetchWatchDetails(videoId, this.props.channelId);
   }
 
   render() {
