@@ -243,3 +243,12 @@ export const getRelatedVideos = createSelector(
     return [];
   }
 );
+
+export const getAmountComments = createSelector(
+  getVideoById,
+  (video) => {
+    if (video) {
+      return video.statistics.commentCount;
+    }
+    return 0;
+  });
