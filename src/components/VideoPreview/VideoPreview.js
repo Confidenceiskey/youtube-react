@@ -17,13 +17,17 @@ class VideoPreview extends Component {
       return <div />;
     }
 
+    const expanded = this.props.expanded ? 'expanded' : null;
+    const description = this.props.expanded ? video.snippet.description : null;
+
     const duration = video.contentDetails ? video.contentDetails.duration : null;
     const videoDuration = getVideoDurationString(duration);
     const viewAndTimeString = VideoPreview.getFormattedViewAndTime(video);
     const horizontal = this.props.horizontal? 'horizontal' : null;
+    
     return (
       <Link to={{pathname: this.props.pathname, search: this.props.search}}>
-        <div className={['video-preview', horizontal].join(' ')}>
+        <div className={['video-preview', horizontal, expanded].join(' ')}>
           <div className='image-container'>
             <Image 
               src={video.snippet.thumbnails.medium.url} 
@@ -34,10 +38,11 @@ class VideoPreview extends Component {
             </div>
           </div>
           <div className='video-info'>
-            <div className='semi-bold show-max-two-lines'>{video.snippet.title}</div>
+            <div className={['semi-bold', 'show-max-two-lines', expanded].join(' ')}>{video.snippet.title}</div>
             <div className='video-preview-metadata-container'>
               <div className='channel-title'>{video.snippet.channelTitle}</div>
-              <div><span>{viewAndTimeString}</span></div>
+              <div className='view-and-time'>{viewAndTimeString}</div>
+              <div className='show-max-two-lines'>{description}</div>
             </div>
           </div>
         </div>
