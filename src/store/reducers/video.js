@@ -202,6 +202,22 @@ export const videosByCategoryLoaded = createSelector(
   }
 );
 
+const getMostPopular = (state) => state.videos.mostPopular;
+export const getMostPopularVideosNextPageToken = createSelector(
+  getMostPopular,
+  (mostPopular) => {
+    return mostPopular.nextPageToken;
+  }
+);
+
+export const allMostPopularVideosLoaded = createSelector(
+  [getMostPopular],
+  (mostPopular) => {
+    const amountFetchedItems = mostPopular.items ? mostPopular.items.length : 0;
+    return amountFetchedItems === mostPopular.totalResults;
+  }
+);
+
 export const getMostPopularVideos = createSelector(
   (state) => state.videos.byId,
   (state) => state.videos.mostPopular,

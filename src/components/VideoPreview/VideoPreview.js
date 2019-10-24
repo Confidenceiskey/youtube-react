@@ -49,6 +49,7 @@ class VideoPreview extends Component {
       </Link>
     );
   }
+  
   static getFormattedViewAndTime(video) {
     const publicationDate = new Date(video.snippet.publishedAt);
     const viewCount = video.statistics ? video.statistics.viewCount : null;

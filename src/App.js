@@ -6,6 +6,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import { youtubeLibraryLoaded } from './store/actions/api';
+import Trending from './containers/Trending/Trending';
 
 const API_KEY = 'secret';
 
@@ -34,6 +35,7 @@ class App extends Component {
     return (
       <AppLayout>
         <Switch>
+          <Route path='/feed/trending' component={Trending} />
           <Route path='/watch' render={() => <Watch key={this.props.location.key} />} />
           <Route path='/' component={Home} />
         </Switch>

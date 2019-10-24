@@ -8,7 +8,6 @@ class SideBarItem extends Component {
   shouldBeHighLighted = () => {
     const { pathname } = this.props.location;
     const path = this.props.path;
-    console.log('pathname = ', pathname);
 
     if (path === '/') {
       return pathname === path;
