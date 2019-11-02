@@ -1,9 +1,8 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import InfiniteScroll from '../../components/InfiniteScroll/InfiniteScroll';
 import VideoPreview from '../../components/VideoPreview/VideoPreview';
-import SideBar from '../SideBar/SideBar';
+import VideoList from '../../components/VideoList/VideoList';
 import * as videoActions from '../../store/actions/video';
 import { 
   allMostPopularVideosLoaded, 
@@ -11,7 +10,6 @@ import {
   getMostPopularVideosNextPageToken
 } from '../../store/reducers/video';
 import { getYoutubeLibraryLoaded } from '../../store/reducers/api';
-import './Trending.scss';
 
 class Trending extends Component {
 
@@ -58,20 +56,13 @@ class Trending extends Component {
   }
 
   render() {
-    const previews = this.getVideoPreviews();
     const loaderActive = this.shouldShowLoader();
     return (  
-      <Fragment>
-        <SideBar />
-        <div className='trending'>
-          <InfiniteScroll 
-            bottomReachedCallback={this.fetchMoreVideos} 
-            showLoader={loaderActive}
-          >
-            {previews}
-          </InfiniteScroll>
-        </div>
-      </Fragment>
+      <VideoList
+        bottomReachedCallback={this.fetchMoreVideos} 
+        showLoader={loaderActive}
+        videos={this.props.videos}
+      />
     );
   }
 }

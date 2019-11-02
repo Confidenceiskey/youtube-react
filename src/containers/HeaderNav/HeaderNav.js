@@ -1,10 +1,28 @@
 import React, { Component } from 'react';
 import { Image, Menu, Form, Icon } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import './HeaderNav.scss';
 import * as logo from '../../assets/images/mytube.jpg';
 
-export class HeaderNav extends Component {
+class HeaderNav extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      query: ''
+    };
+  }
+
+  onInputChange = (e) => {
+    this.setState({
+      query: e.target.value
+    });
+  };
+
+  onSubmit = () => {
+    const escapedSearchQuery = encodeURI(this.state.query);
+    this.props.history.push(`/results?search_query=${escapedSearchQuery}`);
+  };
+
   render() {
     return (
       <Menu borderless className='top-menu' fixed='top'>
@@ -15,12 +33,14 @@ export class HeaderNav extends Component {
         </Menu.Item>
         <Menu.Menu className='nav-container'>
           <Menu.Item className='search-input'>
-            <Form>
+            <Form onSubmit={this.onSubmit}>
               <Form.Field>
                 <input
                   placeholder='Search' 
                   size='small'
                   action='Go'
+                  value={this.state.query}
+                  onChange={this.onInputChange}
                 />
               </Form.Field>
             </Form>
@@ -48,5 +68,4 @@ export class HeaderNav extends Component {
   }
 }
 
-export default HeaderNav;
-
+export default withRouter(HeaderNav);
