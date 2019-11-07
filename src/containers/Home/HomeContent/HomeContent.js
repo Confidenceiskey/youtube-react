@@ -3,7 +3,6 @@ import './HomeContent.scss';
 import VideoGrid from '../../../components/VideoGrid/VideoGrid';
 import { connect } from 'react-redux';
 import { getMostPopularVideos, getVideosByCategory } from '../../../store/reducers/video';
-import { getVideoCategoryIds } from '../../../store/reducers/video';
 import InfiniteScroll from '../../../components/InfiniteScroll/InfiniteScroll';
 
 const AMOUNT_TRENDING_VIDEOS = 12;

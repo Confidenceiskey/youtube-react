@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Image, Menu, Form, Icon } from 'semantic-ui-react';
+import { Image, Menu, Form, Icon, Input } from 'semantic-ui-react';
 import { Link, withRouter } from 'react-router-dom';
 import './HeaderNav.scss';
 import * as logo from '../../assets/images/mytube.jpg';
@@ -35,7 +35,7 @@ class HeaderNav extends Component {
           <Menu.Item className='search-input'>
             <Form onSubmit={this.onSubmit}>
               <Form.Field>
-                <input
+                <Input
                   placeholder='Search' 
                   size='small'
                   action='Go'

@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import './VideoList.scss';
 import SideBar from '../../containers/SideBar/SideBar';
 import InfiniteScroll from '../InfiniteScroll/InfiniteScroll';
 import VideoPreview from '../VideoPreview/VideoPreview';
